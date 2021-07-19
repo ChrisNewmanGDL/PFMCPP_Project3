@@ -37,14 +37,14 @@ struct Bar
 };
 struct Foo
 {
-    Bar scopeLifetimeFunc( int threshold, int startingVal ) //1), 2c)
+    Bar scopeLifetimeFunc(int threshold, int startingVal) //1), 2c)
     {
         Bar bar(startingVal);                //2a)
-        while( bar.num < threshold )         //2a)
+        while(bar.num < threshold)         //2a)
         {
             bar.num += 1;                    //2a)
             std::cout << "  increasing bar.num: " << bar.num << std::endl; //4)
-            if( bar.num >= threshold )       //2b)
+            if(bar.num >= threshold)       //2b)
                 return bar;
         }
 
@@ -80,7 +80,7 @@ struct Laptop
     void checkMemory()
     {
         float ssdSpaceRemaining = ssdCapacity - ssdSpaceUsed;
-        std::string result = (ssdSpaceRemaining < 100) ? "Disk Space Low!  " : "Disk Space OK  ";
+        std::string result =(ssdSpaceRemaining < 100) ? "Disk Space Low!  " : "Disk Space OK  ";
         std::cout << result << std::endl;
     }
 
@@ -93,7 +93,7 @@ struct Laptop
 
 void Laptop::displayCalculation(float result, bool calcButtonClick)
 {
-   std::cout << ((calcButtonClick) ? result : 0 );
+   std::cout <<((calcButtonClick) ? result : 0);
 }
 
 void Laptop::printMe()
@@ -103,7 +103,7 @@ void Laptop::printMe()
 //..........................................................................
 void Laptop::displayBatteryWarning()
 {
-    while (batteryLifeLeft > 10)
+    while(batteryLifeLeft > 10)
     {
         std::cout << "Battery OK "  << batteryLifeLeft << "%" << std::endl;
         --batteryLifeLeft;
@@ -129,12 +129,12 @@ struct DigitalPiano
 
     DigitalPiano() : numberOfKeys(88), storedEffects(10), pedals(3), outputSockets(5), eqSliders(3), sampleNo(0), numberOfSamples(25), metronomeOn(true), beatsPerMinute(120) { }
 
-    void identifySampleTune (int sampleNumber = 2);
-    void checkMidiConnectionStatus (bool connected = true);
+    void identifySampleTune(int sampleNumber = 2);
+    void checkMidiConnectionStatus(bool connected = true);
     //.............................................
     void displayPianoBatteryStatus(int threshold);
     //.............................................
-    void printMetronomeStatus ()
+    void printMetronomeStatus()
     {
         if(metronomeOn == true)
         {
@@ -148,9 +148,9 @@ struct DigitalPiano
     }
 };
 
-void DigitalPiano::identifySampleTune (int sampleNumber)
+void DigitalPiano::identifySampleTune(int sampleNumber)
 {
-    switch (sampleNumber)
+    switch(sampleNumber)
     {
         case 1:
             std::cout << "Sample tune is - How Long Blues  " << std::endl;
@@ -161,15 +161,15 @@ void DigitalPiano::identifySampleTune (int sampleNumber)
     }
 }
 
-void DigitalPiano::checkMidiConnectionStatus (bool connected)
+void DigitalPiano::checkMidiConnectionStatus(bool connected)
 {
-    std::cout << ((connected) ? "Midi connection made" : "Connect midi cable" );
+    std::cout <<((connected) ? "Midi connection made" : "Connect midi cable");
 }
 
 //.....................................................................
 void DigitalPiano::displayPianoBatteryStatus(int dpThreshold)
 {
-    while (dpThreshold < dpBatteryRemaining)
+    while(dpThreshold < dpBatteryRemaining)
     {
         std::cout << "DP Battery OK "  << dpBatteryRemaining << "%" << std::endl;
         --dpBatteryRemaining;
@@ -189,7 +189,7 @@ struct FootballTeam
 
     void rateTrainingEfficacy()
     {
-        std::cout << "current efficacy rating = " << (passSuccessPercentage + possessionPercentage)/2 << "%" << std::endl;
+        std::cout << "current efficacy rating = " <<(passSuccessPercentage + possessionPercentage)/2 << "%" << std::endl;
     }
     int rateAttack(int shotsOnTarget, int shotsTotal);
     int scoreMoreThanTheOtherLot(int goalsFor, int goalsAgainst);
@@ -210,7 +210,7 @@ int FootballTeam::scoreMoreThanTheOtherLot(int goalsFor, int goalsAgainst)
 //................................................................................
 void FootballTeam::trackLeaguePosition()
 {
-    for (int i = 0; i< matchesWon; ++i)
+    for(int i = 0; i < matchesWon; ++i)
     {
         std::cout << "League position = " << leaguePosition << std::endl;
         leaguePosition--;
@@ -242,12 +242,12 @@ struct SmallBusiness
         std::string assessorAddress;
         bool dbsCheck;
 
-        Assessor() : assessorName("Joe Brown"), assessorAccountNumber("016884546"), assessorPayRate(45), assessorAddress("7 Pimlico Road WC1 3DT"), dbsCheck (true) { }
+        Assessor() : assessorName("Joe Brown"), assessorAccountNumber("016884546"), assessorPayRate(45), assessorAddress("7 Pimlico Road WC1 3DT"), dbsCheck(true) { }
 
 
         void dbsChecked()
         {
-            std::cout << (dbsCheck ? "Check OK" : "Check not yet done") << std::endl;
+            std::cout <<(dbsCheck ? "Check OK" : "Check not yet done") << std::endl;
         }
 
         float getAddendumReportInfo(float readingTime, int numClients, int interviewTime, float writingTime);
@@ -265,18 +265,18 @@ struct SmallBusiness
 
 float SmallBusiness::calculatePayroll(int numEmployees, float monthlyPay)
 {
-    return (monthlyPay * 12) * numEmployees;
+    return(monthlyPay * 12) * numEmployees;
 }
 
 float SmallBusiness::calculateReportInvoiceCost(float chargeOutRate, float assessorHoursSpent)
 {
-    float invoiceTotal = (chargeOutRate * assessorHoursSpent);
+    float invoiceTotal =(chargeOutRate * assessorHoursSpent);
     return invoiceTotal;
 }
 //.................................................................
 void SmallBusiness::areWeAGoingConcern()
 {
-    while (profit > costs)
+    while(profit > costs)
     {
          std::cout << "profit = " << profit << std::endl;
          std::cout << "costs = " << costs << std::endl;
@@ -296,7 +296,7 @@ void SmallBusiness::Assessor::printAssessorDetails(std::string name, std::string
 
 float SmallBusiness::Assessor::getAddendumReportInfo(float readingTime, int numClients, int interviewTime, float writingTime)
 {
-    return (readingTime + interviewTime + writingTime) * numClients;
+    return(readingTime + interviewTime + writingTime) * numClients;
 }
 
 void SmallBusiness::printMe()
@@ -324,10 +324,10 @@ struct Oscillator
     float noteInHz;
     float audibleThresholdHz;
 
-    Oscillator() :  vOctInput(0.5f), defaultVoltage (0.f), waveformControlPosition(4), pulseWidthPercent(50.f), octave(0), modSocketVolts(0.f), noteInHz(440.f), audibleThresholdHz(20000.f) { }
+    Oscillator() :  vOctInput(0.5f), defaultVoltage(0.f), waveformControlPosition(4), pulseWidthPercent(50.f), octave(0), modSocketVolts(0.f), noteInHz(440.f), audibleThresholdHz(20000.f) { }
 
     float modulateNote(float inputSocketVolts, float modSocketVolts);
-    void selectOscWaveform (int waveformControlPosition, int waveformModInputValue);
+    void selectOscWaveform(int waveformControlPosition, int waveformModInputValue);
     void printMe();
     void ascendingNote(float audibleThresholdHz);
 
@@ -347,7 +347,7 @@ void Oscillator::selectOscWaveform(int waveformCtrlPosition, int waveformModInpu
 {
     int waveform = waveformCtrlPosition + waveformModInputVal;
 
-    switch (waveform)
+    switch(waveform)
     {
         case 1:
             std::cout << "Sine";
@@ -367,7 +367,7 @@ void Oscillator::selectOscWaveform(int waveformCtrlPosition, int waveformModInpu
 
 void Oscillator::ascendingNote(float thresholdHz)
 {
-    while (noteInHz < thresholdHz)
+    while(noteInHz < thresholdHz)
     {
         std::cout << noteInHz <<  "Hz" << " Note is theoretically within human range " << std::endl;
         noteInHz *= 2;
@@ -382,7 +382,7 @@ void Oscillator::printMe()
     modSocketVolts = 2.167f;
     float combinedVolts =  vOctInput + modSocketVolts;
     std::cout << "combinedVolts = " << combinedVolts << std::endl;
-    std::cout << ((combinedVolts > 4) ?  "Voltage is above max value of 4v" : " - ");
+    std::cout <<((combinedVolts > 4) ?  "Voltage is above max value of 4v" : " - ");
     std::cout << std::endl;
 }
 
@@ -400,7 +400,7 @@ struct EnvelopeGenerator
 
     float getAttackTime()
     {
-        std::cout << "Attack time = " << (attackControlValue * timeMultiplier) << "ms" << std::endl;
+        std::cout << "Attack time = " <<(attackControlValue * timeMultiplier) << "ms" << std::endl;
         return attackControlValue * timeMultiplier;
     }
 
@@ -410,7 +410,7 @@ struct EnvelopeGenerator
 
     void printMe()
     {
-        std::cout << ((envGateVoltage > threshold) ? "Gate is on" : "Gate is off");
+        std::cout <<((envGateVoltage > threshold) ? "Gate is on" : "Gate is off");
         std::cout << std::endl;
     }
 
@@ -429,7 +429,7 @@ bool EnvelopeGenerator::getGateState(float envGateVolts, float thresh)
 void EnvelopeGenerator::displayAttackTime()
 {
     Oscillator oscillator; //trying out variable from outside struct
-    while (oscillator.vOctInput < 5)
+    while(oscillator.vOctInput < 5)
     {
         std::cout << "note within range "  << std::endl;
         oscillator.vOctInput += 0.5f;
@@ -454,7 +454,7 @@ struct Filter
 
     void displayFilterMode()
     {
-        std::cout << ((isHighPass) ? "Filter is High Pass" : "Filter is Low Pass" ) <<  std::endl;
+        std::cout <<((isHighPass) ? "Filter is High Pass" : "Filter is Low Pass") <<  std::endl;
     }
 
 };
@@ -472,7 +472,7 @@ float modulFilterCutoff(float freqControlValue, float freqCtrlMultiplier, float 
 //..............................................................................
 void Filter::showMaxVOctWarning()
 {
-    while (cutoffInputVolts < cutoffThreshold)
+    while(cutoffInputVolts < cutoffThreshold)
     {
         std::cout <<  "Cutoff input voltage is  within  range " << std::endl;
         cutoffInputVolts += 2;
@@ -496,7 +496,7 @@ struct Sequencer
     int modulateSeqLength(int seqControlValue, int modLenInputVal);
     int quantizeSequence(int scale, bool quantizeSwitchValue);
     void printMe();
-        void displayNoteRange()
+    void displayNoteRange()
     {
         float range = rangeSemitones + rangeLengthInputVolts;
         std::cout << "Note range is " << range << " semitones" << std::endl;
@@ -512,7 +512,7 @@ int Sequencer::modulateSeqLength(int seqCtrlValue, int modLenInputVal)
 
 int Sequencer::quantizeSequence(int scale, bool quantizeSwitchValue)
 {
-    return (quantizeSwitchValue ? scale : false);
+    return(quantizeSwitchValue ? scale : false);
 }
 
 void Sequencer::printMe()
@@ -525,12 +525,12 @@ void Sequencer::extendRange(int sequenceRangeSemitones)
 {
     std::cout << "Starting semitone range = " << sequenceRangeSemitones << std::endl;
 
-    for (int i=0; i <= maxSemitoneRange; ++i)
+    for(int i = 0; i <= maxSemitoneRange; ++i)
     {
-        sequenceRangeSemitones++;
-        std::cout << "Semitone range is now = " << sequenceRangeSemitones << std::endl;
+        ++sequenceRangeSemitones;
+        std::cout << "Semitone range is now " << sequenceRangeSemitones << std::endl;
     }
-        std::cout << "Semitone range is now " << sequenceRangeSemitones << " - bit much" <<std::endl;
+    std::cout << "Semitone range is now " << sequenceRangeSemitones << " - bit much" <<std::endl;
 
 }
 
@@ -545,9 +545,9 @@ struct Arpeggiator
     float voltageThreshold;
 
     int arpLength = 0; //MATKAT EXAMPLE
-    Arpeggiator(int n):arpLength(n) {}
+    Arpeggiator(int n) : arpLength(n) {}
 
-    Arpeggiator() : arpInputVolts(0.f), chordType(" Major9 "), arpModeControlValue(2), arpMode (" "),isHigh(true), clockInputVolts(0.f), voltageThreshold(10.f) { }
+    Arpeggiator() : arpInputVolts(0.f), chordType(" Major9 "), arpModeControlValue(2), arpMode(" "),isHigh(true), clockInputVolts(0.f), voltageThreshold(10.f) { }
 
     int modulateChordType(int chordControlValue, int chordModulationInputVal);
     int modulateOctave(int octControlValue, int octModulationInputVal);
@@ -556,7 +556,7 @@ struct Arpeggiator
 
     void modulateArpMode()
     {
-        std::cout << "Arpeggiator mode = " << ((arpModeControlValue = 1) ? "Up " : "Down" ) << std::endl;
+        std::cout << "Arpeggiator mode = " <<((arpModeControlValue = 1) ? "Up " : "Down") << std::endl;
     }
 
     void displayInputVolts();
@@ -581,7 +581,7 @@ void Arpeggiator::printMe()
 void Arpeggiator::showMaxVOctWarning()
 {
 
-    while (arpInputVolts < voltageThreshold)
+    while(arpInputVolts < voltageThreshold)
     {
         std::cout <<  "Arpeggiator input voltage is  within  range " << std::endl;
         arpInputVolts += 2;
@@ -601,15 +601,15 @@ struct Synthesizer
     int arpInputVolts { 2 };
     std::string chordType { " - " };
 
-Arpeggiator increaseArpeggioLength( int threshold, int startingVal ) //MATKAT EXAMPLE
+Arpeggiator increaseArpeggioLength(int threshold, int startingVal) //MATKAT EXAMPLE
     {
         Arpeggiator arpeggiator(startingVal);
-        while( arpeggiator.arpLength < threshold )
+        while(arpeggiator.arpLength < threshold)
         {
             arpeggiator.arpLength += 1;
             std::cout << "Increasing length of arpeggio: " << arpeggiator.arpLength << std::endl;
-            if( arpeggiator.arpLength >= threshold )
-                return arpeggiator;
+            if(arpeggiator.arpLength >= threshold)
+            return arpeggiator;
         }
 
         return Arpeggiator {-1};
@@ -617,7 +617,7 @@ Arpeggiator increaseArpeggioLength( int threshold, int startingVal ) //MATKAT EX
 
     void generateArpLabel()
     {
-        chordType = (arpInputVolts = 1) ? "Maj" : "Min";
+        chordType =(arpInputVolts = 1) ? "Maj" : "Min";
         std::cout << "Chord type = " << chordType  << std::endl;
     }
 
@@ -630,20 +630,20 @@ Arpeggiator increaseArpeggioLength( int threshold, int startingVal ) //MATKAT EX
         bool slowMode;
 
 
-        LFO() : lfoFrequencyHz(16.35f), lfoWaveformControlPosition (2), lfoPulseWidthPercent (50), resetInputVolts (false), slowMode (false) { }
+        LFO() : lfoFrequencyHz(16.35f), lfoWaveformControlPosition(2), lfoPulseWidthPercent(50), resetInputVolts(false), slowMode(false) { }
 
-        void selectLfoWaveform (int waveformControlPosition, int waveformModInputVolts);
+        void selectLfoWaveform(int waveformControlPosition, int waveformModInputVolts);
         int checkSlowMode(bool slowModeSwitchPosition);
         void printMe();
 
         void displayPulseWidth()
         {
-            std::cout << "Pulse width = " << (lfoPulseWidthPercent) << "%" << std::endl;
+            std::cout << "Pulse width = " <<(lfoPulseWidthPercent) << "%" << std::endl;
         }
 
     };
 
-    int selectOscWaveform (int waveformControlPosition, int waveformModInputVal);
+    int selectOscWaveform(int waveformControlPosition, int waveformModInputVal);
     float modulateFilterCutoff(float frequencyControlValue, float freqControlMultiplier,float modulationInputVolts);
     void generateArp(float arpInputVolts, std::string chordType);
     void printMe();
@@ -652,24 +652,24 @@ Arpeggiator increaseArpeggioLength( int threshold, int startingVal ) //MATKAT EX
 };
 
  // Synthesizer member functions
-int Synthesizer::selectOscWaveform (int waveformCtrlPosition, int waveformModInputVal)
+int Synthesizer::selectOscWaveform(int waveformCtrlPosition, int waveformModInputVal)
 {
     return waveformCtrlPosition + waveformModInputVal;
 }
 
 float Synthesizer::modulateFilterCutoff(float frequencyCtrlValue, float freqCtrlMultiplier,float modInputVolts)
 {
-    return (frequencyCtrlValue + modInputVolts) * freqCtrlMultiplier;
+    return(frequencyCtrlValue + modInputVolts) * freqCtrlMultiplier;
 }
 
 
    // LFO member functions
 
-void Synthesizer::LFO::selectLfoWaveform (int waveformCtrlPosition, int waveformModInputVal)
+void Synthesizer::LFO::selectLfoWaveform(int waveformCtrlPosition, int waveformModInputVal)
 {
 int waveform = waveformCtrlPosition + waveformModInputVal;
 
-    switch (waveform)
+    switch(waveform)
         {
         case 1:
             std::cout << "Sine";
@@ -738,7 +738,7 @@ int main()
 
     SmallBusiness largerBusiness;
     largerBusiness.printMe();
-    std::cout << "is profit now immense? " << (((largerBusiness.assessmentPrice * largerBusiness.numAssessments) > 1000000) ? "Certainly is! " : "No ") << std::endl;
+    std::cout << "is profit now immense? " <<(((largerBusiness.assessmentPrice * largerBusiness.numAssessments) > 1000000) ? "Certainly is! " : "No ") << std::endl;
     SmallBusiness sisterBusiness;
     sisterBusiness.areWeAGoingConcern();
 
@@ -757,7 +757,7 @@ int main()
 
     Filter kitchenFilter;
     kitchenFilter.isHighPass = true;
-    std::cout << "Different filter =  "<< ((kitchenFilter.isHighPass) ? "Tea leaves " : "Coffee grinds ") << std::endl;
+    std::cout << "Different filter =  "<<((kitchenFilter.isHighPass) ? "Tea leaves " : "Coffee grinds ") << std::endl;
     Filter freakFilter;
     freakFilter.displayFilterMode();
     freakFilter.showMaxVOctWarning();
@@ -775,7 +775,7 @@ int main()
     simpleArpeggiator.modulateArpMode();
     simpleArpeggiator.showMaxVOctWarning();
 
-    switch (chordVal)
+    switch(chordVal)
     {
         case 1:
             std::cout << "Chord is major7" << std::endl;
