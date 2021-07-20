@@ -80,7 +80,7 @@ struct Laptop
     void checkMemory()
     {
         float ssdSpaceRemaining = ssdCapacity - ssdSpaceUsed;
-        std::string result =(ssdSpaceRemaining < 100) ? "Disk Space Low!  " : "Disk Space OK  "; FIXME
+        std::string result = ssdSpaceRemaining < 100 ? "Disk Space Low!  " : "Disk Space OK  "; 
         std::cout << result << std::endl;
     }
 
@@ -93,7 +93,7 @@ struct Laptop
 
 void Laptop::displayCalculation(float result, bool calcButtonClick)
 {
-   std::cout <<((calcButtonClick) ? result : 0); FIXME
+   std::cout << ((calcButtonClick) ? result : 0); 
 }
 
 void Laptop::printMe()
@@ -163,7 +163,7 @@ void DigitalPiano::identifySampleTune(int sampleNumber)
 
 void DigitalPiano::checkMidiConnectionStatus(bool connected)
 {
-    std::cout <<((connected) ? "Midi connection made" : "Connect midi cable"); FIXME
+    std::cout << ((connected) ? "Midi connection made" : "Connect midi cable"); 
 }
 
 //.....................................................................
@@ -189,7 +189,7 @@ struct FootballTeam
 
     void rateTrainingEfficacy()
     {
-        std::cout << "current efficacy rating = " <<(passSuccessPercentage + possessionPercentage)/2 << "%" << std::endl; FIXME
+        std::cout << "current efficacy rating = " << passSuccessPercentage + possessionPercentage/2 << "%" << std::endl;
     }
     int rateAttack(int shotsOnTarget, int shotsTotal);
     int scoreMoreThanTheOtherLot(int goalsFor, int goalsAgainst);
@@ -199,8 +199,8 @@ struct FootballTeam
 
 int FootballTeam::rateAttack(int shotsOnTarget, int shotsTotal)
 {
-    int percentAccuracy = int(shotsOnTarget/shotsTotal*100); FIXME: casting has not been covered yet.  remove this cast to int
-    return percentAccuracy;
+    int percentAccuracy = (shotsOnTarget/shotsTotal * 100); 
+    return percentAccuracy; 
 }
 
 int FootballTeam::scoreMoreThanTheOtherLot(int goalsFor, int goalsAgainst)
@@ -247,7 +247,7 @@ struct SmallBusiness
 
         void dbsChecked()
         {
-            std::cout <<(dbsCheck ? "Check OK" : "Check not yet done") << std::endl; FIXME
+            std::cout << (dbsCheck ? "Check OK" : "Check not yet done") << std::endl;
         }
 
         float getAddendumReportInfo(float readingTime, int numClients, int interviewTime, float writingTime);
@@ -265,12 +265,12 @@ struct SmallBusiness
 
 float SmallBusiness::calculatePayroll(int numEmployees, float monthlyPay)
 {
-    return(monthlyPay * 12) * numEmployees; FIXME
+    return monthlyPay * 12 * numEmployees; 
 }
 
 float SmallBusiness::calculateReportInvoiceCost(float chargeOutRate, float assessorHoursSpent)
 {
-    float invoiceTotal =(chargeOutRate * assessorHoursSpent); FIXME
+    float invoiceTotal = chargeOutRate * assessorHoursSpent; 
     return invoiceTotal;
 }
 //.................................................................
@@ -296,7 +296,7 @@ void SmallBusiness::Assessor::printAssessorDetails(std::string name, std::string
 
 float SmallBusiness::Assessor::getAddendumReportInfo(float readingTime, int numClients, int interviewTime, float writingTime)
 {
-    return(readingTime + interviewTime + writingTime) * numClients; FIXME
+    return (readingTime + interviewTime + writingTime) * numClients;
 }
 
 void SmallBusiness::printMe()
@@ -382,7 +382,7 @@ void Oscillator::printMe()
     modSocketVolts = 2.167f;
     float combinedVolts =  vOctInput + modSocketVolts;
     std::cout << "combinedVolts = " << combinedVolts << std::endl;
-    std::cout <<((combinedVolts > 4) ?  "Voltage is above max value of 4v" : " - "); FIXME
+    std::cout << ((combinedVolts > 4) ?  "Voltage is above max value of 4v" : " - ");
     std::cout << std::endl;
 }
 
@@ -400,7 +400,7 @@ struct EnvelopeGenerator
 
     float getAttackTime()
     {
-        std::cout << "Attack time = " <<(attackControlValue * timeMultiplier) << "ms" << std::endl; FIXME
+        std::cout << "Attack time = " << attackControlValue * timeMultiplier << "ms" << std::endl; 
         return attackControlValue * timeMultiplier;
     }
 
@@ -410,7 +410,7 @@ struct EnvelopeGenerator
 
     void printMe()
     {
-        std::cout <<((envGateVoltage > threshold) ? "Gate is on" : "Gate is off"); FIXME
+        std::cout << ((envGateVoltage > threshold) ? "Gate is on" : "Gate is off"); 
         std::cout << std::endl;
     }
 
@@ -423,7 +423,7 @@ float EnvelopeGenerator::getSustainLevel(float attControlValue, float susMult)
 
 bool EnvelopeGenerator::getGateState(float envGateVolts, float thresh)
 {
-    return(envGateVolts < thresh) ? true : false; FIXME: you can just write 'return envGateVolts < thresh;'
+    return envGateVolts < thresh; 
 }
 //...............................................................
 void EnvelopeGenerator::displayAttackTime()
@@ -454,7 +454,7 @@ struct Filter
 
     void displayFilterMode()
     {
-        std::cout <<((isHighPass) ? "Filter is High Pass" : "Filter is Low Pass") <<  std::endl; FIXME
+        std::cout << ((isHighPass) ? "Filter is High Pass" : "Filter is Low Pass") <<  std::endl;
     }
 
 };
@@ -466,8 +466,8 @@ float getDriveLevel(float driveCtrlValue, float driveInVolts, float gain)
 
 float modulFilterCutoff(float freqControlValue, float freqCtrlMultiplier, float modInputVolts)
 {
-    float cutoff = modInputVolts + freqControlValue * freqCtrlMultiplier;
-    return cutoff;  FIXME: no need for the temporary local variable. 
+    
+    return (modInputVolts + freqControlValue) * freqCtrlMultiplier;   
 }
 //..............................................................................
 void Filter::showMaxVOctWarning()
@@ -512,7 +512,7 @@ int Sequencer::modulateSeqLength(int seqCtrlValue, int modLenInputVal)
 
 int Sequencer::quantizeSequence(int scale, bool quantizeSwitchValue)
 {
-    return(quantizeSwitchValue ? scale : false); FIXME: DO NOT use 'false' when you mean 0.  this function returns 'int'.
+    return (quantizeSwitchValue ? scale : 0);
 }
 
 void Sequencer::printMe()
@@ -556,7 +556,7 @@ struct Arpeggiator
 
     void modulateArpMode()
     {
-        std::cout << "Arpeggiator mode = " <<((arpModeControlValue = 1) ? "Up " : "Down") << std::endl; FIXME
+        std::cout << "Arpeggiator mode = " << ((arpModeControlValue = 1) ? "Up " : "Down") << std::endl; 
     }
 
     void displayInputVolts();
@@ -580,15 +580,13 @@ void Arpeggiator::printMe()
 //...........................................................................
 void Arpeggiator::showMaxVOctWarning()
 {
- FIXME remove this blank line
     while(arpInputVolts < voltageThreshold)
     {
         std::cout <<  "Arpeggiator input voltage is  within  range " << std::endl;
         arpInputVolts += 2;
     }
     std::cout << "Arpeggiator input voltage out of range" << std::endl;
- FIXME remove this blank line
-}
+ }
 //............................................................................
 struct Synthesizer
 {
@@ -601,7 +599,7 @@ struct Synthesizer
     int arpInputVolts { 2 };
     std::string chordType { " - " };
 
-Arpeggiator increaseArpeggioLength(int threshold, int startingVal)  FIXME
+    Arpeggiator increaseArpeggioLength (int threshold, int startingVal)  
     {
         Arpeggiator arpeggiator(startingVal);
         while(arpeggiator.arpLength < threshold)
@@ -609,7 +607,7 @@ Arpeggiator increaseArpeggioLength(int threshold, int startingVal)  FIXME
             arpeggiator.arpLength += 1;
             std::cout << "Increasing length of arpeggio: " << arpeggiator.arpLength << std::endl;
             if(arpeggiator.arpLength >= threshold)
-            return arpeggiator;
+                return arpeggiator;
         }
 
         return Arpeggiator {-1};
@@ -617,7 +615,7 @@ Arpeggiator increaseArpeggioLength(int threshold, int startingVal)  FIXME
 
     void generateArpLabel()
     {
-        chordType =(arpInputVolts = 1) ? "Maj" : "Min"; FIXME
+        chordType = (arpInputVolts = 1) ? "Maj" : "Min";
         std::cout << "Chord type = " << chordType  << std::endl;
     }
 
@@ -659,7 +657,7 @@ int Synthesizer::selectOscWaveform(int waveformCtrlPosition, int waveformModInpu
 
 float Synthesizer::modulateFilterCutoff(float frequencyCtrlValue, float freqCtrlMultiplier,float modInputVolts)
 {
-    return(frequencyCtrlValue + modInputVolts) * freqCtrlMultiplier; FIXME
+    return (frequencyCtrlValue + modInputVolts) * freqCtrlMultiplier;
 }
 
 
@@ -667,10 +665,10 @@ float Synthesizer::modulateFilterCutoff(float frequencyCtrlValue, float freqCtrl
 
 void Synthesizer::LFO::selectLfoWaveform(int waveformCtrlPosition, int waveformModInputVal)
 {
-int waveform = waveformCtrlPosition + waveformModInputVal; FIXME
+    int waveform = waveformCtrlPosition + waveformModInputVal;
 
     switch(waveform)
-        { FIXME: curly brace placement should vertically line up with the 'switch' keyword 
+    { 
         case 1:
             std::cout << "Sine";
             break;
@@ -683,8 +681,8 @@ int waveform = waveformCtrlPosition + waveformModInputVal; FIXME
         case 4:
             std::cout << "Square";
             break;
-        } FIXME
-    } FIXME
+    }
+}
 
 
 Synthesizer::Synthesizer()
@@ -738,7 +736,7 @@ int main()
 
     SmallBusiness largerBusiness;
     largerBusiness.printMe();
-    std::cout << "is profit now immense? " <<(((largerBusiness.assessmentPrice * largerBusiness.numAssessments) > 1000000) ? "Certainly is! " : "No ") << std::endl; FIXME
+    std::cout << "is profit now immense? " << (((largerBusiness.assessmentPrice * largerBusiness.numAssessments) > 1000000) ? "Certainly is! " : "No ") << std::endl;
     SmallBusiness sisterBusiness;
     sisterBusiness.areWeAGoingConcern();
 
@@ -757,7 +755,7 @@ int main()
 
     Filter kitchenFilter;
     kitchenFilter.isHighPass = true;
-    std::cout << "Different filter =  "<<((kitchenFilter.isHighPass) ? "Tea leaves " : "Coffee grinds ") << std::endl; FIXME
+    std::cout << "Different filter =  " << ((kitchenFilter.isHighPass) ? "Tea leaves " : "Coffee grinds ") << std::endl;
     Filter freakFilter;
     freakFilter.displayFilterMode();
     freakFilter.showMaxVOctWarning();
