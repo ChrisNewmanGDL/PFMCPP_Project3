@@ -590,11 +590,11 @@ void Arpeggiator::showMaxVOctWarning()
 //............................................................................
 struct Synthesizer
 {
-//    Oscillator vOctInput;
-//    EnvelopeGenerator  envGateVoltage;
-//    Arpeggiator arpMode;
-//    Filter cutoffInputVolts;
-//    Sequencer rangeSemitones;
+    Oscillator vOctInput;
+    EnvelopeGenerator  envGateVoltage;
+    Arpeggiator arpMode;
+    Filter cutoffInputVolts;
+    Sequencer rangeSemitones;
 
     int arpInputVolts { 2 };
     std::string chordType { " - " };
